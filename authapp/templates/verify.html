@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="mx-auto col-3">
+            {% if user.is_authenticated %}
+                <h1>Спасибо за регистрацию</h1>
+                <p>Ваш аккаунт активирован</p>
+                <br>
+            {% else %}
+                <h1>Что то пошло не так</h1>
+                <p>Активация не удалась</p>
+                <br>
+            {% endif %}
+            <a href="{% url 'index' %}" class="">На главную</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% load static %}
+
+<div class="related">
+    <div class="title clearfix">
+        <h2>Похожие продукты</h2>
+        <a class="explore" href="#">показать все <img src="{% static 'img/arrow.png' %}" alt=""></a>
+    </div>
+    <div class="related-products clearfix">
+        {% for item in related %}
+        <div class="block">
+            <a href="{% url 'mainapp:product' item.id %}"><img src="/media/{{ item.image }}" alt="">
+                <div class="text">
+                    <img src="{% static 'img/icon-hover.png' %}" alt="img">
+                    <h4>{{ item.name }}</h4>
+                    <p>{{ item.short_desc }}</p>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>

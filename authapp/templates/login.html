@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="mx-auto col-3">
+            <form class="from-horizontal" action="{% url 'authapp:login' %}" method="post">
+                {% csrf_token %}
+                {{ login_form.as_p }}
+                <button type="submit" class="btn btn-primary">Войти</button>
+            </form>
+        </div>
+    </div>
+    <button class="btn btn-round form-control">
+        <a href="{% url 'social:begin' 'vk-oauth2'%}?next=/" class="">Вход через VK</a>
+    </button>
+    <button class="btn btn-round form-control">
+        <a href="{% url 'authapp:register' %}" class="">Зарегистрироваться</a>
+    </button>
+</div>
+{% endblock %}

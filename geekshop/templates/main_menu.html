@@ -1,0 +1,49 @@
+<div class="header clearfix">
+    <a href="/" class="logo"></a>
+    <ul class="menu nav nav-pills">
+        {% url 'index' as index_url %}
+        <li class="nav-item">
+            <a href="{{ index_url }}"
+               class="nav-link{% if request.path == index_url %} active_menu{% endif %}">домой</a>
+        </li>
+        {% url 'mainapp:index' as product_url %}
+        <li class="nav-item">
+            <a href="{{ product_url }}" class="nav-link{% if product_url in request.path %} active_menu{% endif %}">продукты</a>
+        </li>
+        {% url 'contacts' as contacts_url %}
+        <li class="nav-item">
+            <a href="{{ contacts_url }}" class="nav-link{% if request.path == contacts_url %} active_menu{% endif %}">контакты</a>
+        </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                {{ user.first_name|default:'Пользователь' }}</a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="{% url 'authapp:edit' %}" class="dropdown-item">Профиль</a>
+                </li>
+                {% if user.is_superuser%}
+                <li>
+                    <a href="{% url 'admin_staff:users' %}" class="dropdown-item">Админка</a>
+                </li>
+                {% endif %}
+                <li>
+                    <a href="{% url 'order:list' %}" class="dropdown-item">Заказы</a>
+                </li>
+                <li>
+                    <a href="{% url 'authapp:logout' %}" class="dropdown-item">Выйти</a>
+                </li>
+            </ul>
+        </li>
+        {% else %}
+        <li class="nav-item">
+            <a href="{% url 'authapp:login' %}" class="nav-link">Войти</a>
+        </li>
+        {% endif %}
+    </ul>
+    {% if user.is_authenticated %}
+    <a href="{% url 'basket:list' %}" class="basket fa fa-shopping-basket">{{ basket_items.0.total_quantity }} шт.
+        {{ basket_items.0.total_cost|floatformat:"-2" }} руб. </a>
+    {% endif %}
+    <a href="#" class="search"></a>
+</div>

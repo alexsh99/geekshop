@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="col-6 mx-auto mt-5 shadow">
+    <div class="row">
+        <div class="col-4">
+            <img src="/media/{{ user.avatar }}" class="img-thumbnail rounded-circle" alt="Avatar">
+        </div>
+        <div class="col">
+            <form action="{% url 'authapp:edit' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ edit_form }}
+                {{ profile_form }}
+                <input type="submit" class="form-control" value="Сохранить">
+            </form>
+            <button class="btn btn-round form-control last">
+                <a href="{% url 'index' %}" class="">на главную</a>
+            </button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

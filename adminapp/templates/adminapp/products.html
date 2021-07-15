@@ -1,0 +1,67 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <h1 class="mt-4">Продукты
+        {% if category %}
+        :<span>{{ category.name }}</span>
+        {% endif %}
+    </h1>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fa fa-table mr-1"></i>
+            <a href="{% url 'admin_staff:categories' %}">Категории</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-sm table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                    <tr class="text-center">
+                        <th>Изображение</th>
+                        <th>Имя</th>
+                        <th>Описание</th>
+                        <th>Количество</th>
+                        <th>Цена</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for object in objects %}
+                    <tr {% if not object.is_active %}  style="opacity: 0.5;" {% endif %}>
+                        <td class="text-center"><img src="/media/{{object.image|default:'products_images/default.jpg'}}"
+                                 alt="{{ object.name }}" style="width:50px;">
+                        </td>
+                        <td class="text-center align-middle">{{ object.name|title }}</td>
+                        <td class="text-center align-middle">{{ object.short_desc|title }}</td>
+                        <td class="text-center align-middle">{{ object.quantity }}</td>
+                        <td class="text-center align-middle">{{ object.price }} руб</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="actions">
+                                <button class="btn btn-warning">
+                                    <a class="text-dark" href="{% url 'admin_staff:product_update' object.id %}">редактировать</a>
+                                </button>
+                                {% if object.is_active %}
+                                <button class="btn btn-danger">
+                                    <a class="text-white" href="{% url 'admin_staff:product_delete' object.id %}">удалить</a>
+                                </button>
+                                {% endif %}
+                            </div>
+                        </td>
+                    </tr>
+                    {% endfor%}
+                    </tbody>
+                </table>
+                <div class="card-footer">
+                    <button class="btn btn-success">
+                        <a class="text-white" href="{% url 'admin_staff:product_create' category %}">
+                            новый продукт
+                        </a>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,10 @@
+<div class="links clearfix">
+    <ul class="links-menu">
+        <li><a href="{% url 'mainapp:index' %}" {% if category.id == 0 %} class="active" {% endif %}>ВСЕ</a></li>
+        {% for item in categories %}
+        {% if item.is_active %}
+        <li><a href="{% url 'mainapp:index' %}category/{{ item.id }}/" {% if category.id == item.id %} class="active" {% endif %}> {{ item.name|upper }}</a></li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+</div>

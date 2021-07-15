@@ -1,0 +1,23 @@
+{% extends 'main_layout.html' %}
+{% load static %}
+
+{% block js_head %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+{% endblock %}
+{% block content %}
+<div class="hero-white">
+    {% include 'main_menu.html' %}
+</div>
+    {% if user.is_authenticated %}
+        <div class="container">
+            <div class="row">
+                <div class="col-10 m-auto basket_list">
+                    {% include 'includes/inc_basket_list.html' %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+{% block js %}
+<script src="{% static 'js/basket.js' %}"></script>
+{% endblock %}

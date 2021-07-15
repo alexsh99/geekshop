@@ -1,0 +1,38 @@
+[
+  {
+    "category": "Дом",
+    "name": "Крсло Cintra",
+    "image": "products_img/cintra.png",
+    "short_desc": "Кресло удобное. Легко собирать.",
+    "description": "",
+    "price": "15999.00",
+    "quantity": 5
+  },
+  {
+    "category": "Дом",
+    "name": "Отличный стул",
+    "image": "products_img/stul_1.jpg",
+    "short_desc": "Расположитесь комфортно.",
+    "description": "Отличное качество материалов позволит вам это.\r\nРазличные цвета\r\nвысочайший уровень эргономики и прочность.",
+    "price": "2585.90",
+    "quantity": 2
+  },
+  {
+    "category": "Офис",
+    "name": "Стол",
+    "image": "products_img/stol.png",
+    "short_desc": "Письменный стол со стеллажом Lead",
+    "description": "",
+    "price": "30000.00",
+    "quantity": 12
+  },
+  {
+    "category": "Классика",
+    "name": "Стол Ренцо-2",
+    "image": "products_img/comp.png",
+    "short_desc": "ТОВАР МОЖНО ПРИМЕРИТЬ В ИНТЕРЬЕРЕ",
+    "description": "",
+    "price": "9000.00",
+    "quantity": 12
+  }
+]
