@@ -4,3 +4,5 @@ pillow
 social_auth_app_django
 requests
 django-debug-toolbar
+django-debug-toolbar-template-profiler
+wheel
